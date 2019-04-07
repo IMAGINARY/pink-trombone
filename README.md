@@ -1,2 +1,3 @@
 # pink-trombone
-Pink Trombone exhibit by Neil Thapen
+
+Pink Trombone exhibit by Neil Thapen.
