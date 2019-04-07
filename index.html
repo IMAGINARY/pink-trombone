@@ -100,8 +100,8 @@ IN THE SOFTWARE.
   var sampleRate;
   var time = 0;
   var temp = {a:0, b:0};
-  var alwaysVoice = true;
-  var autoWobble = true;
+  var alwaysVoice = false;
+  var autoWobble = false;
   var noiseFreq = 500;
   var noiseQ = 0.7;
   var palePink = "#FFEEF5";
@@ -125,9 +125,12 @@ IN THE SOFTWARE.
         this.mouseTouch = {alive: false, endTime: 0};
         this.mouseDown = false;
 
-        this.aboutButton = makeButton(460, 392, 140, 30, "about...", true);
-        this.alwaysVoiceButton = makeButton(460, 428, 140, 30, "always voice", true);
-        this.autoWobbleButton = makeButton(460, 464, 140, 30, "pitch wobble", true);
+        // this.aboutButton = makeButton(460, 392, 140, 30, "about...", true);
+        this.aboutButton = nullButton(true);
+        //this.alwaysVoiceButton = makeButton(460, 428, 140, 30, "always voice", true);
+        this.alwaysVoiceButton = nullButton(false);
+        //this.autoWobbleButton = makeButton(460, 464, 140, 30, "pitch wobble", true);
+        this.autoWobbleButton = nullButton(false);
 
         tractCanvas.addEventListener('touchstart', UI.startTouches);
         tractCanvas.addEventListener('touchmove', UI.moveTouches);
@@ -1639,6 +1642,20 @@ IN THE SOFTWARE.
 
     }
 
+
+  function nullButton(switchedOn) {
+    return {
+      x: null,
+      y: null,
+      width: null,
+      height: null,
+      text: null,
+      switchedOn: switchedOn,
+      draw: function(ctx) {},
+      drawText: function(ctx) {},
+      handleTouchStart: function(touch) {},
+    };
+  }
 
   function makeButton(x, y, width, height, text, switchedOn)
   {
