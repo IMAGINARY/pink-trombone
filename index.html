@@ -466,15 +466,15 @@ IN THE SOFTWARE.
       {
         if (window.innerWidth <= window.innerHeight)
         {
-          this.width = window.innerWidth-10;
-          this.left_margin = 5;
+          this.width = window.innerWidth-80;
+          this.left_margin = 40;
           this.top_margin = 0.5*(window.innerHeight-this.width);
         }
         else
         {
-          this.width = window.innerHeight-10;
+          this.width = window.innerHeight-80;
           this.left_margin = 0.5*(window.innerWidth-this.width);
-          this.top_margin = 5;
+          this.top_margin = 40;
         }
         document.body.style.marginLeft = this.left_margin;
         document.body.style.marginTop = this.top_margin;
