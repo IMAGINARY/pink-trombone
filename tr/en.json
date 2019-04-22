@@ -1,0 +1,16 @@
+{
+  "NASAL_CAVITY": "nasal cavity",
+  "SOFT_PALATE_1": "soft",
+  "SOFT_PALATE_2": "palate",
+  "HARD_PALATE_1": "hard",
+  "HARD_PALATE_2": "palate",
+  "ORAL_CAVITY": "oral cavity",
+  "LIP": "lip",
+  "THROAT": "throat",
+  "TONGUE_CONTROL": "tongue control",
+  "VOICEBOX_CONTROL": "voicebox control",
+  "PITCH": "pitch",
+  "NASALS": "nasals",
+  "STOPS": "stops",
+  "FRICATIVES": "fricatives"
+}

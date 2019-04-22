@@ -52,6 +52,11 @@ IN THE SOFTWARE.
   <title>Pink Trombone</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="vendor/quicksand/quicksand.css">
+  <link rel="stylesheet" href="css/default.css">
+  <script src="vendor/jquery/jquery-3.4.0.min.js"></script>
+  <script src="vendor/i18n4js/i18n4js-1.3.0.min.js"></script>
+  <script src="vendor/fontfaceobserver/fontfaceobserver.js"></script>
 </head>
 
 <body style="margin: 0; padding: 0; background-color:white">
@@ -172,21 +177,21 @@ IN THE SOFTWARE.
         ctx.globalAlpha = 1.0;
         ctx.fillStyle = "#C070C6";
         ctx.strokeStyle = "#C070C6";
-        ctx.font="50px Arial";
+        ctx.font="50px Quicksand";
         ctx.lineWidth = 3;
         ctx.textAlign = "center";
         ctx.strokeText("P i n k   T r o m b o n e", 300, 230);
         ctx.fillText("P i n k   T r o m b o n e", 300, 230);
 
-        ctx.font="28px Arial";
+        ctx.font="28px Quicksand";
         ctx.fillText("bare-handed  speech synthesis", 300, 330);
 
-        ctx.font="20px Arial";
+        ctx.font="20px Quicksand";
         //ctx.fillText("(tap to start)", 300, 380);
 
         if (isFirefox)
         {
-          ctx.font="20px Arial";
+          ctx.font="20px Quicksand";
           ctx.fillText("(sorry - may work poorly with the Firefox browser)", 300, 430);
         }
       },
@@ -204,11 +209,11 @@ IN THE SOFTWARE.
         ctx.globalAlpha = 1.0;
         ctx.fillStyle = "#C070C6";
         ctx.strokeStyle = "#C070C6";
-        ctx.font="24px Arial";
+        ctx.font="24px Quicksand";
         ctx.lineWidth = 2;
         ctx.textAlign = "center";
 
-        ctx.font = "19px Arial";
+        ctx.font = "19px Quicksand";
         ctx.textAlign = "left";
         this.instructionsLine = 0;
         this.write("Sound is generated in the glottis (at the bottom left) then ");
@@ -657,18 +662,18 @@ IN THE SOFTWARE.
         }
 
         backCtx.fillStyle = "orchid";
-        backCtx.font="17px Arial";
+        backCtx.font="bold 14px Quicksand";
         backCtx.textAlign = "center";
         backCtx.globalAlpha = 0.7;
-        backCtx.fillText("voicebox control", 300, 490);
-        backCtx.fillText("pitch", 300, 592);
+        backCtx.fillText(IMAGINARY.i18n.t("VOICEBOX_CONTROL"), 300, 490);
+        backCtx.fillText(IMAGINARY.i18n.t("PITCH"), 300, 592);
         backCtx.globalAlpha = 0.3;
         backCtx.strokeStyle = "orchid";
         backCtx.fillStyle = "orchid";
         backCtx.save()
-        backCtx.translate(410, 587);
+        backCtx.translate(430, 587);
         this.drawArrow(80, 2, 10);
-        backCtx.translate(-220, 0);
+        backCtx.translate(-260, 0);
         backCtx.rotate(Math.PI);
         this.drawArrow(80, 2, 10);
         backCtx.restore();
@@ -1285,15 +1290,13 @@ IN THE SOFTWARE.
 
         //white text
         this.ctx.fillStyle = "white";
-        this.ctx.font="20px Arial";
+        this.ctx.font="bold 20px Quicksand";
         this.ctx.textAlign = "center";
         this.ctx.globalAlpha = 1.0;
-        this.drawText(Tract.n*0.10, 0.425, "throat");
-        this.drawText(Tract.n*0.71, -1.8, "nasal");
-        this.drawText(Tract.n*0.71, -1.3, "cavity");
-        this.ctx.font="22px Arial";
-        this.drawText(Tract.n*0.6, 0.9, "oral");
-        this.drawText(Tract.n*0.7, 0.9, "cavity");
+        this.drawText(Tract.n*0.10, 0.425, IMAGINARY.i18n.t("THROAT"));
+        this.drawText(Tract.n*0.7, -1.5, IMAGINARY.i18n.t("NASAL_CAVITY"));
+        this.ctx.font="bold 20px Quicksand";
+        this.drawText(Tract.n*0.7, 0.9, IMAGINARY.i18n.t("ORAL_CAVITY"));
 
 
         this.drawAmplitudes();
@@ -1335,10 +1338,10 @@ IN THE SOFTWARE.
 
 
         this.ctx.fillStyle = "orchid";
-        this.ctx.font="20px Arial";
+        this.ctx.font="bold 14px Quicksand";
         this.ctx.textAlign = "center";
         this.ctx.globalAlpha = 0.7;
-        this.drawText(Tract.n*0.95, 0.8+0.8*Tract.diameter[Tract.n-1], " lip");
+        this.drawText(Tract.n*0.95, 0.8+0.8*Tract.diameter[Tract.n-1], " " + IMAGINARY.i18n.t("LIP"));
 
         this.ctx.globalAlpha=1.0;
         this.ctx.fillStyle = "black";
@@ -1354,27 +1357,27 @@ IN THE SOFTWARE.
 
         //text
         this.ctx.fillStyle = "orchid";
-        this.ctx.font="20px Arial";
+        this.ctx.font="bold 14px Quicksand";
         this.ctx.textAlign = "center";
         this.ctx.globalAlpha = 0.7;
-        this.drawText(Tract.n*0.44, -0.28, "soft");
-        this.drawText(Tract.n*0.51, -0.28, "palate");
-        this.drawText(Tract.n*0.77, -0.28, "hard");
-        this.drawText(Tract.n*0.84, -0.28, "palate");
-        this.drawText(Tract.n*0.95, -0.28, " lip");
+        this.drawText(Tract.n*0.44, -0.28, IMAGINARY.i18n.t("SOFT_PALATE_1"));
+        this.drawText(Tract.n*(0.47 + this.ctx.measureText(IMAGINARY.i18n.t("SOFT_PALATE_1")).width * 0.001), -0.28, IMAGINARY.i18n.t("SOFT_PALATE_2"));
+        this.drawText(Tract.n*0.74, -0.28, IMAGINARY.i18n.t("HARD_PALATE_1"));
+        this.drawText(Tract.n*(0.77 +  + this.ctx.measureText(IMAGINARY.i18n.t("HARD_PALATE_1")).width * 0.001), -0.28, IMAGINARY.i18n.t("HARD_PALATE_2"));
+        this.drawText(Tract.n*0.95, -0.28, " " + IMAGINARY.i18n.t("LIP"));
 
-        this.ctx.font="17px Arial";
-        this.drawTextStraight(Tract.n*0.18, 3, "  tongue control");
+        this.ctx.font="bold 14px Quicksand";
+        this.drawTextStraight(Tract.n*0.18, 3, "  " + IMAGINARY.i18n.t("TONGUE_CONTROL"));
         this.ctx.textAlign = "left";
-        this.drawText(Tract.n*1.03, -1.07, "nasals");
-        this.drawText(Tract.n*1.03, -0.28, "stops");
-        this.drawText(Tract.n*1.03, 0.51, "fricatives");
+        this.drawText(Tract.n*1.01, -1.07, IMAGINARY.i18n.t("NASALS"));
+        this.drawText(Tract.n*1.01, -0.28, IMAGINARY.i18n.t("STOPS"));
+        this.drawText(Tract.n*1.01, 0.51, IMAGINARY.i18n.t("FRICATIVES"));
         //this.drawTextStraight(1.5, +0.8, "glottis")
         this.ctx.strokeStyle = "orchid";
         this.ctx.lineWidth = 2;
         this.ctx.beginPath();
-        this.moveTo(Tract.n*1.03, 0); this.lineTo(Tract.n*1.07, 0);
-        this.moveTo(Tract.n*1.03, -this.noseOffset); this.lineTo(Tract.n*1.07,  -this.noseOffset);
+        this.moveTo(Tract.n*1.01, 0); this.lineTo(Tract.n*1.04, 0);
+        this.moveTo(Tract.n*1.01, -this.noseOffset); this.lineTo(Tract.n*1.04,  -this.noseOffset);
         this.ctx.stroke();
         this.ctx.globalAlpha = 0.9;
         this.ctx.globalAlpha = 1.0;
@@ -1384,7 +1387,7 @@ IN THE SOFTWARE.
       drawPositions : function()
       {
         this.ctx.fillStyle = "orchid";
-        this.ctx.font="24px Arial";
+        this.ctx.font="bold 24px Quicksand";
         this.ctx.textAlign = "center";
         this.ctx.globalAlpha = 0.6;
         var a = 2;
@@ -1686,7 +1689,7 @@ IN THE SOFTWARE.
       ctx.stroke();
       ctx.fill();
 
-      ctx.font="16px Arial";
+      ctx.font="bold 16px Quicksand";
       ctx.textAlign = "center";
       if (this.switchedOn)
       {
@@ -1718,27 +1721,45 @@ IN THE SOFTWARE.
     return button;
   }
 
+  function start() {
+    document.body.style.cursor = 'pointer';
 
-  document.body.style.cursor = 'pointer';
+    AudioSystem.init();
+    UI.init();
+    Glottis.init();
+    Tract.init();
+    TractUI.init();
 
-  AudioSystem.init();
-  UI.init();
-  Glottis.init();
-  Tract.init();
-  TractUI.init();
-
-  requestAnimationFrame(redraw);
-  function redraw(highResTimestamp)
-  {
-    UI.shapeToFitScreen();
-    TractUI.draw();
-    UI.draw();
     requestAnimationFrame(redraw);
-    time = Date.now()/1000;
-    UI.updateTouches();
+    function redraw(highResTimestamp)
+    {
+      UI.shapeToFitScreen();
+      TractUI.draw();
+      UI.draw();
+      requestAnimationFrame(redraw);
+      time = Date.now()/1000;
+      UI.updateTouches();
+    }
   }
 
+  function addLanguageSwitcher() {
+    var code = '';
+    var name = '';
+    if (IMAGINARY.i18n.getLang() === 'en') {
+      code = 'de';
+      name = 'Deutsch';
+    } else {
+      code = 'en';
+      name = 'English';
+    }
 
+    $('body').append(
+      $('<a>')
+        .attr('href', 'index.html?lang=' + code)
+        .addClass('language-switcher')
+        .text(name)
+    );
+  }
 
   /**********************************************************************************/
   /**********************************************************************************/
@@ -1901,6 +1922,22 @@ IN THE SOFTWARE.
 
 
   })(this);
+
+  IMAGINARY.i18n.init({
+    queryStringVariable: 'lang',
+    translationsDirectory: 'tr',
+    defaultLanguage: 'en'
+  }).then(function(){
+    return Promise.all([
+      new FontFaceObserver('Quicksand', { weight: 400 }).load(),
+      new FontFaceObserver('Quicksand', { weight: 700 }).load(),
+    ]);
+  }).then(function() {
+    start();
+    addLanguageSwitcher();
+  }).catch(function(err){
+    // Handle error
+  });
 
 </script>
 

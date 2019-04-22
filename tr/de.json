@@ -1,0 +1,27 @@
+{
+  "NASAL_CAVITY": "Nasenhöhle",
+  "SOFT_PALATE_1": "Weicher",
+  "SOFT_PALATE_2": "Gaumen",
+  "HARD_PALATE_1": "Harter",
+  "HARD_PALATE_2": "Gaumen",
+  "ORAL_CAVITY": "Mundhöhle",
+  "LIP": "Lippe",
+  "THROAT": "Kehle",
+  "TONGUE_CONTROL": "Steuerung der Zunge",
+  "VOICEBOX_CONTROL": "Steuerung des Kehlkopfs",
+  "PITCH": "Tonhöhe",
+  "NASALS": "Nasale",
+  "STOPS": "Verschlusslaute",
+  "FRICATIVES": "Reibelaute"
+}
+
+
+
+
+
+
+
+
+
+
+
