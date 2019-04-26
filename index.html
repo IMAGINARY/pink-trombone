@@ -1298,7 +1298,6 @@ IN THE SOFTWARE.
         this.ctx.font="bold 20px Quicksand";
         this.drawText(Tract.n*0.7, 0.9, IMAGINARY.i18n.t("ORAL_CAVITY"));
 
-
         this.drawAmplitudes();
 
         //then draw lines
@@ -1452,19 +1451,25 @@ IN THE SOFTWARE.
         this.ctx.globalAlpha = 0.3;
         for (var i=2; i<Tract.n-1; i++)
         {
-          this.ctx.beginPath();
-          this.ctx.lineWidth = Math.sqrt(Tract.maxAmplitude[i])*3;
-          this.moveTo(i, 0);
-          this.lineTo(i, Tract.diameter[i]);
-          this.ctx.stroke();
+          var lineWidth = Math.sqrt(Tract.maxAmplitude[i])*3;
+          if (lineWidth > 0) {
+            this.ctx.beginPath();
+            this.ctx.lineWidth = lineWidth;
+            this.moveTo(i, 0);
+            this.lineTo(i, Tract.diameter[i]);
+            this.ctx.stroke();
+          }
         }
         for (var i=1; i<Tract.noseLength-1; i++)
         {
-          this.ctx.beginPath();
-          this.ctx.lineWidth = Math.sqrt(Tract.noseMaxAmplitude[i]) * 3;
-          this.moveTo(i+Tract.noseStart, -this.noseOffset);
-          this.lineTo(i+Tract.noseStart, -this.noseOffset - Tract.noseDiameter[i]*0.9);
-          this.ctx.stroke();
+          var lineWidth = Math.sqrt(Tract.noseMaxAmplitude[i]) * 3;
+          if (lineWidth > 0) {
+            this.ctx.beginPath();
+            this.ctx.lineWidth = lineWidth;
+            this.moveTo(i+Tract.noseStart, -this.noseOffset);
+            this.lineTo(i+Tract.noseStart, -this.noseOffset - Tract.noseDiameter[i]*0.9);
+            this.ctx.stroke();
+          }
         }
         this.ctx.globalAlpha = 1;
       },
