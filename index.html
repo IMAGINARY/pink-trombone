@@ -504,8 +504,8 @@ IN THE SOFTWARE.
       {
         //scriptProcessor may need a dummy input channel on iOS
         this.scriptProcessor = this.audioContext.createScriptProcessor(this.blockLength, 2, 1);
-        this.scriptProcessor.connect(this.audioContext.destination);
         this.scriptProcessor.onaudioprocess = AudioSystem.doScriptProcessor;
+        this.scriptProcessor.connect(this.audioContext.destination);
 
         var whiteNoise = this.createWhiteNoiseNode(2*sampleRate); // 2 seconds of noise
 
@@ -596,6 +596,7 @@ IN THE SOFTWARE.
       intensity : 0,
       loudness : 1,
       isTouched : false,
+      isTouchingSomewhere: false,
       ctx : backCtx,
       touch : 0,
       x : 240,
@@ -710,7 +711,10 @@ IN THE SOFTWARE.
 
       handleTouches :  function()
       {
-        if (this.touch != 0 && !this.touch.alive) this.touch = 0;
+        this.isTouchingSomewhere = false;
+        if (this.touch != 0 && !this.touch.alive) {
+          this.touch = 0;
+        }
 
         if (this.touch == 0)
         {
@@ -718,6 +722,7 @@ IN THE SOFTWARE.
           {
             var touch = UI.touchesWithMouse[j];
             if (!touch.alive) continue;
+            this.isTouchingSomewhere = true;
             if (touch.y<this.keyboardTop) continue;
             this.touch = touch;
           }
@@ -725,6 +730,7 @@ IN THE SOFTWARE.
 
         if (this.touch != 0)
         {
+          this.isTouchingSomewhere = true;
           var local_y = this.touch.y -  this.keyboardTop-10;
           var local_x = this.touch.x - this.keyboardLeft;
           local_y = Math.clamp(local_y, 0, this.keyboardHeight-26);
@@ -785,9 +791,9 @@ IN THE SOFTWARE.
         this.oldTenseness = this.newTenseness;
         this.newTenseness = this.UITenseness
           + 0.1*noise.simplex1(this.totalTime*0.46)+0.05*noise.simplex1(this.totalTime*0.36);
-        if (!this.isTouched && alwaysVoice) this.newTenseness += (3-this.UITenseness)*(1-this.intensity);
+        if (!this.isTouched && (alwaysVoice || this.isTouchingSomewhere)) this.newTenseness += (3-this.UITenseness)*(1-this.intensity);
 
-        if (this.isTouched || alwaysVoice) this.intensity += 0.13;
+        if (this.isTouched || alwaysVoice || this.isTouchingSomewhere) this.intensity += 0.13;
         else this.intensity -= 0.05;
         this.intensity = Math.clamp(this.intensity, 0, 1);
       },
@@ -1647,7 +1653,6 @@ IN THE SOFTWARE.
           }
         }
       },
-
     }
 
 
