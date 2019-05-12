@@ -486,7 +486,9 @@ IN THE SOFTWARE.
 
   var AudioSystem =
     {
-      blockLength : 512,
+      // blockLength Can be set to 512 for more responsiveness but
+      // potential crackling if CPU can't fill the buffer fast enough (latency)
+      blockLength : 1024,
       blockTime : 1,
       started : false,
       soundOn : false,
