@@ -1036,11 +1036,11 @@ IN THE SOFTWARE.
 
         for (var i=0; i<this.n; i++)
         {
-          this.R[i] = this.junctionOutputR[i]*0.999;
-          this.L[i] = this.junctionOutputL[i+1]*0.999;
+          // this.R[i] = this.junctionOutputR[i]*0.999;
+          // this.L[i] = this.junctionOutputL[i+1]*0.999;
 
-          //this.R[i] = Math.clamp(this.junctionOutputR[i] * this.fade, -1, 1);
-          //this.L[i] = Math.clamp(this.junctionOutputL[i+1] * this.fade, -1, 1);
+          this.R[i] = Math.clamp(this.junctionOutputR[i] * 0.999, -1, 1);
+          this.L[i] = Math.clamp(this.junctionOutputL[i+1] * 0.999, -1, 1);
 
           if (updateAmplitudes)
           {
@@ -1064,11 +1064,11 @@ IN THE SOFTWARE.
 
         for (var i=0; i<this.noseLength; i++)
         {
-          this.noseR[i] = this.noseJunctionOutputR[i] * this.fade;
-          this.noseL[i] = this.noseJunctionOutputL[i+1] * this.fade;
+          // this.noseR[i] = this.noseJunctionOutputR[i] * this.fade;
+          // this.noseL[i] = this.noseJunctionOutputL[i+1] * this.fade;
 
-          //this.noseR[i] = Math.clamp(this.noseJunctionOutputR[i] * this.fade, -1, 1);
-          //this.noseL[i] = Math.clamp(this.noseJunctionOutputL[i+1] * this.fade, -1, 1);
+          this.noseR[i] = Math.clamp(this.noseJunctionOutputR[i] * 0.999, -1, 1);
+          this.noseL[i] = Math.clamp(this.noseJunctionOutputL[i+1] * 0.999, -1, 1);
 
           if (updateAmplitudes)
           {
