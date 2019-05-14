@@ -488,7 +488,7 @@ IN THE SOFTWARE.
     {
       // blockLength Can be set to 512 for more responsiveness but
       // potential crackling if CPU can't fill the buffer fast enough (latency)
-      blockLength : 1024,
+      blockLength : 2048,
       blockTime : 1,
       started : false,
       soundOn : false,
@@ -796,7 +796,7 @@ IN THE SOFTWARE.
         if (!this.isTouched && (alwaysVoice || this.isTouchingSomewhere)) this.newTenseness += (3-this.UITenseness)*(1-this.intensity);
 
         if (this.isTouched || alwaysVoice || this.isTouchingSomewhere) this.intensity += 0.13;
-        else this.intensity -= 0.05;
+        else this.intensity -= (AudioSystem.blockTime * 5);
         this.intensity = Math.clamp(this.intensity, 0, 1);
       },
 
