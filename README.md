@@ -1,7 +1,8 @@
 # pink-trombone
 
-Pink Trombone exhibit by Neil Thapen (venuspatrol.nfshost.com)
+Pink Trombone exhibit by [Neil Thapen](venuspatrol.nfshost.com)
 Bare-handed procedural speech synthesis.
+[Original version](https://dood.al/pinktrombone/)
 
 ## Bibliography (provided by author)
 
