@@ -437,6 +437,7 @@ IN THE SOFTWARE.
 
       handleTouches : function(event)
       {
+        AudioSystem.resume();
         TractUI.handleTouches();
         Glottis.handleTouches();
       },
@@ -527,9 +528,13 @@ IN THE SOFTWARE.
 
         whiteNoise.start(0);
 
-        this.audioContext.resume();
+        this.resume();
       },
 
+      resume : function() {
+        this.audioContext.resume();
+      },
+      
       createWhiteNoiseNode : function(frameCount)
       {
         var myArrayBuffer = this.audioContext.createBuffer(1, frameCount, sampleRate);
