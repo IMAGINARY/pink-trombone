@@ -526,6 +526,8 @@ IN THE SOFTWARE.
         fricativeFilter.connect(this.scriptProcessor);
 
         whiteNoise.start(0);
+
+        this.audioContext.resume();
       },
 
       createWhiteNoiseNode : function(frameCount)
