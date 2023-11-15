@@ -137,18 +137,19 @@ IN THE SOFTWARE.
         //this.autoWobbleButton = makeButton(460, 464, 140, 30, "pitch wobble", true);
         this.autoWobbleButton = nullButton(false);
 
-        tractCanvas.addEventListener('touchstart', UI.startTouches);
-        tractCanvas.addEventListener('touchmove', UI.moveTouches);
-        tractCanvas.addEventListener('touchend', UI.endTouches);
-        tractCanvas.addEventListener('touchcancel', UI.endTouches);
+        const listenerOptions = { passive: false };
+        tractCanvas.addEventListener('touchstart', UI.startTouches, listenerOptions);
+        tractCanvas.addEventListener('touchmove', UI.moveTouches, listenerOptions);
+        tractCanvas.addEventListener('touchend', UI.endTouches, listenerOptions);
+        tractCanvas.addEventListener('touchcancel', UI.endTouches, listenerOptions);
 
-        document.addEventListener('touchstart', (function(event) {event.preventDefault();}) );
+        document.addEventListener('touchstart', (function(event) {event.preventDefault();}), listenerOptions );
 
         document.addEventListener('mousedown', (function(event)
-        {UI.mouseDown = true; event.preventDefault(); UI.startMouse(event);}));
+        {UI.mouseDown = true; event.preventDefault(); UI.startMouse(event);}), listenerOptions);
         document.addEventListener('mouseup', (function(event)
-        {UI.mouseDown = false; UI.endMouse(event);}));
-        document.addEventListener('mousemove', UI.moveMouse);
+        {UI.mouseDown = false; UI.endMouse(event);}), listenerOptions);
+        document.addEventListener('mousemove', UI.moveMouse, listenerOptions);
       },
 
       draw : function()
